@@ -5,14 +5,18 @@ import lombok.Getter;
 import lombok.Setter;
 import me.untouchedodin0.prisoncore.PrisonCore;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.event.Listener;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.logging.Logger;
+
+// https://github.com/Langomatisch/Kiara/blob/master/core/src/main/java/de/mcgregordev/kiara/core/module/Module.java
 
 @Getter
 @Setter(AccessLevel.PACKAGE)
@@ -90,5 +94,34 @@ public class Module {
 
     public void onLoad() {
 
+    }
+
+    protected static <M> M getModule(String string) {
+        for (Module module : moduleLoader.getLoadedModules()) {
+            if (module.getName().equalsIgnoreCase(string)) {
+                return (M) module;
+            }
+        }
+        return null;
+    }
+
+    protected void registerCommand(Command command) {
+        commandMap.register(command.getName(), command);
+    }
+
+    protected void registerListener(Listener listener) {
+        Bukkit.getPluginManager().registerEvents(listener, PrisonCore.getInstance());
+    }
+
+    public void registerListener(String path) {
+        try {
+            for (Class<?> classes : Class.forName(path).getClasses()) {
+                if (classes.isInstance(Listener.class)) {
+                    registerListener((Listener) classes.newInstance());
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException classNotFoundException) {
+            classNotFoundException.printStackTrace();
+        }
     }
 }
