@@ -2,6 +2,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.5.10'
     id 'java'
     id 'io.freefair.lombok' version '6.3.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 
 group 'com.untouchedOdin0'
@@ -23,4 +24,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+task copyTo1_17Server(type: Copy) {
+    from shadowJar
+    into "E:/Coding/Spigot Test Servers/1.17 - Paper (PrisonCore)/plugins"
 }
