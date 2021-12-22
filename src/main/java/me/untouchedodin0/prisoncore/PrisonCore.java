@@ -1,6 +1,7 @@
 package me.untouchedodin0.prisoncore;
 
 import lombok.Getter;
+import me.untouchedodin0.prisoncore.modules.ranks.Rank;
 import me.untouchedodin0.prisoncore.modules.ranks.Ranks;
 import me.untouchedodin0.prisoncore.modules.tokens.Tokens;
 import org.bukkit.plugin.java.JavaPlugin;
