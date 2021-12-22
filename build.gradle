@@ -8,10 +8,16 @@ plugins {
 group 'com.untouchedOdin0'
 version '1.0-SNAPSHOT'
 
+ext {
+    redCommandsVersion = '1.5.3.1'
+}
+
 repositories {
     mavenCentral()
 
+//    maven { url = 'https://jitpack.io' }
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://redempt.dev/' }
 }
 
 dependencies {
@@ -20,6 +26,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
     compileOnly 'org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT'
+    compileOnly 'com.github.Redempt:RedCommands:1.5.3.1'
 }
 
 test {
