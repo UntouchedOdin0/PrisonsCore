@@ -13,4 +13,6 @@ public interface Module {
     String getName();
 
     String getVersion();
+
+    PrisonCore getPrisonCore();
 }

@@ -1,3 +1,6 @@
-tokens,token {
-    hook tokens
+rank {
+  hook rankHook
+}
+ranks {
+  hook ranksHook
 }

@@ -11,6 +11,10 @@ public class Ranks implements Module {
     private PrisonCore prisonCore;
     private boolean enabled;
 
+    public Ranks(PrisonCore prisonCore) {
+        this.prisonCore = prisonCore;
+    }
+
     public void enable() {
         this.enabled = true;
     }

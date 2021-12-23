@@ -1,7 +1,7 @@
 package me.untouchedodin0.prisoncore;
 
 import lombok.Getter;
-import me.untouchedodin0.prisoncore.commands.tokens.TokensCommand;
+import me.untouchedodin0.prisoncore.commands.Command;
 import me.untouchedodin0.prisoncore.modules.ranks.Ranks;
 import me.untouchedodin0.prisoncore.modules.tokens.Tokens;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,8 +27,8 @@ public class PrisonCore extends JavaPlugin {
         instance = this;
         this.modules = new LinkedHashMap<>();
 
-        loadModule(new Ranks());
-        loadModule(new Tokens());
+        loadModule(new Ranks(this));
+        loadModule(new Tokens(this));
         initModules();
         loadCommands();
     }
@@ -45,8 +45,8 @@ public class PrisonCore extends JavaPlugin {
     }
 
     private void initModules() {
-        this.ranks = new Ranks();
-        this.tokens = new Tokens();
+        this.ranks = new Ranks(this);
+        this.tokens = new Tokens(this);
 
         this.modules.put(this.ranks.getName().toLowerCase(), this.ranks);
         this.modules.put(this.tokens.getName().toLowerCase(), this.tokens);
@@ -56,6 +56,7 @@ public class PrisonCore extends JavaPlugin {
 
         new CommandParser(this.getResource("command.rdcml"))
                 .parse()
-                .register("prisoncore", new TokensCommand(this));
+                .register("prisoncore",
+                          new Command(this));
     }
 }

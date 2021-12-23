@@ -11,6 +11,10 @@ public class Tokens implements Module {
     private PrisonCore prisonCore;
     private boolean enabled;
 
+    public Tokens(PrisonCore prisonCore) {
+        this.prisonCore = prisonCore;
+    }
+
     public void enable() {
         this.enabled = true;
     }
