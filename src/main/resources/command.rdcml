@@ -4,3 +4,6 @@ rank {
 ranks {
   hook ranksHook
 }
+tokens {
+  hook tokensHook
+}

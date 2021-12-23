@@ -21,4 +21,9 @@ public class Command {
     public void ranksCommand(Player player) {
         player.sendMessage("Ranks Command!");
     }
+
+    @CommandHook("tokensHook")
+    public void tokensCommand(Player player) {
+        player.sendMessage("Tokens Command!");
+    }
 }
