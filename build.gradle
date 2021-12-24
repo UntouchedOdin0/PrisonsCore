@@ -15,18 +15,25 @@ ext {
 repositories {
     mavenCentral()
 
-//    maven { url = 'https://jitpack.io' }
+    maven { url = 'https://jitpack.io' }
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
     maven { url = 'https://redempt.dev/' }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
     compileOnly 'org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT'
-    compileOnly 'com.github.Redempt:RedCommands:1.5.3.1'
+//    compileOnly 'com.github.Redempt:RedCommands:1.5.3.1'
+    implementation 'com.github.Redempt:RedLib:6.3.0.4'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'com.github.CryptoMorin:XSeries:v8.5.0'
+}
+
+shadowJar {
+    relocate 'redempt.redlib.config', 'me.untouchedodin0.privatemines.config'
 }
 
 test {

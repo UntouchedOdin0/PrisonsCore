@@ -1,0 +1,9 @@
+# Boss Bar
+bossbarMessages:
+    - "&aMessage 1"
+    - "Message 2"
+    - "Message 3"
+
+# Message of the day (server list)
+messageoftheday: "&aI'm the message of the day"
+
